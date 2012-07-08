@@ -4,6 +4,56 @@
 A small set of custom error classes for Node.js.
 
 
+## Installation ##
+
+Just install with `npm install er` or add it to your
+`package.json`.
+
+
+## Usage ##
+
+Er... is really easy to use, it's just a set of error classes!
+All of the classes are available by requiring the 'er' module,
+and they all extend `Error` so you can throw them :)
+
+```js
+// JavaScript
+var FileNotFoundError = require('er').FileNotFoundError;
+throw new FileNotFoundError('File secret-stuff.txt was not found');
+```
+
+```coffeescript
+# CoffeeScript
+{FileNotFoundError} = require 'er'
+throw new FileNotFoundError 'File secret-stuff.txt was not found'
+```
+
+The `er` namespace has the following properties, each of which
+is an error class:
+
+**ArgumentError**  
+Throw when an argument is set to an unexpected or incorrect
+value.
+
+**ArgumentMissingError** *extends ArgumentError*  
+Throw when a required argument is `undefined` or `null`.
+
+**ArgumentRangeError** *extends ArgumentError*  
+Throw when an argument value is out of the expected range.
+
+**ArgumentTypeError** *extends ArgumentError*  
+Throw when an argument type is invalid.
+
+**IOError**  
+Throw when a filesystem operation fails.
+
+**DirectoryNotFoundError** *extends IOError*  
+Throw when a requested directory is not found.
+
+**FileNotFoundError** *extends IOError*  
+Throw when a requested file is not found.
+
+
 ## Development ##
 
 In order to develop Er..., you'll need to install the following
