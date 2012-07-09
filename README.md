@@ -53,6 +53,10 @@ Throw when a requested directory is not found.
 **FileNotFoundError** *extends IOError*  
 Throw when a requested file is not found.
 
+**ConstructionError**  
+Throw when a constructor function is called without the `new`
+keyword.
+
 
 ## Development ##
 

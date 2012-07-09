@@ -8,6 +8,7 @@ errorClasses = [
   'ArgumentMissingError'
   'ArgumentRangeError'
   'ArgumentTypeError'
+  'ConstructionError'
   'DirectoryNotFoundError'
   'FileNotFoundError'
   'IOError'
@@ -22,9 +23,10 @@ suite 'er module', ->
 
   # Test for each error class
   for errorClass in errorClasses
+    do (errorClass) ->
     
-    test "should have a #{errorClass} property", ->
-      assert.isDefined module[errorClass]
+      test "should have a #{errorClass} property", ->
+        assert.isDefined module[errorClass]
 
-    test "#{errorClass} property should be equal to the #{errorClass} module", ->
-      assert.strictEqual module[errorClass], require("../../src/#{errorClass}")
+      test "#{errorClass} property should be equal to the #{errorClass} module", ->
+        assert.strictEqual module[errorClass], require("../../src/#{errorClass}")
