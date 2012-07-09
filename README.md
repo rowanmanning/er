@@ -71,6 +71,8 @@ following commands:
 
 `jake build`: Build JavaScript from the CoffeeScript source.
 
+`jake lint`: Run CoffeeLint on the CoffeeScript source.
+
 `jake test`: Run all unit tests.
 
 

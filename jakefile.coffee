@@ -5,7 +5,8 @@ colors = require 'colors'
 
 # Paths
 paths =
-  nodebin: './node_modules/.bin',
+  nodebin: './node_modules/.bin'
+  src: './src'
   unitTest: './test/unit'
 
 # Build JavaScript
@@ -15,12 +16,23 @@ task 'build', ->
   exec "#{paths.nodebin}/coffee -o ./lib ./src", (error, stdout, stderr) ->
     console.log (if error is null then stdout else stderr)
 
+# Run CoffeeLint
+desc 'This runs CoffeeLint on the CoffeeScript source'
+task 'lint', ->
+  console.log 'Linting:'.cyan
+  exec getLintCommand(), (error, stdout, stderr) ->
+    console.log (if error is null then stdout else stderr)
+
 # Run unit tests
 desc 'This runs all unit tests'
 task 'test', ->
   console.log 'Running tests:'.cyan
   exec getTestCommand(), (error, stdout, stderr) ->
     console.log (if error is null then stdout else stderr)
+
+# Generate a lint command
+getLintCommand = () ->
+  "#{paths.nodebin}/coffeelint #{paths.src}/**";
 
 # Generate a test command
 getTestCommand = (options = {}) ->
