@@ -9,6 +9,9 @@ A small set of custom error classes for Node.js.
 Just install with `npm install er` or add it to your
 `package.json`.
 
+If you use a bundler like [Browserify][browserify], then Er...
+will work just fine in-browser too.
+
 
 ## Usage ##
 
@@ -86,7 +89,6 @@ Dual licensed under the [MIT][mit] or [GPL Version 2][gpl]
 licenses.
 
 
-[bookbind]: http://github.com/rowanmanning/bookbind
-[jake]: http://github.com/mde/jake
+[browserify]: https://github.com/substack/node-browserify
 [mit]: http://opensource.org/licenses/mit-license.php
 [gpl]: http://opensource.org/licenses/gpl-2.0.php
