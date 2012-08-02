@@ -31,10 +31,17 @@ task 'test', ->
   exec getTestCommand(), (error, stdout, stderr) ->
     console.log (if error is null then stdout else stderr)
 
+# CI
+desc 'This runs all tasks required for CI'
+task 'ci', ['lint', 'test']
+
+# Default task
+task 'default', ['build']
+
 # Generate a lint command
 getLintCommand = (options = {}) ->
   options.configFile ?= "#{paths.config}/coffeelint.json"
-  "#{paths.nodebin}/coffeelint -f #{options.configFile} {#{paths.src},#{paths.unitTest}}/**";
+  "#{paths.nodebin}/coffeelint -f #{options.configFile} #{paths.src}/** #{paths.unitTest}/**";
 
 # Generate a test command
 getTestCommand = (options = {}) ->
