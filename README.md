@@ -3,6 +3,8 @@
 
 A small set of custom error classes for Node.js.
 
+[![Build Status][travis-status]][travis]
+
 
 ## Installation ##
 
@@ -90,5 +92,7 @@ licenses.
 
 
 [browserify]: https://github.com/substack/node-browserify
-[mit]: http://opensource.org/licenses/mit-license.php
 [gpl]: http://opensource.org/licenses/gpl-2.0.php
+[mit]: http://opensource.org/licenses/mit-license.php
+[travis]: https://secure.travis-ci.org/rowanmanning/pledge.png?branch=master
+[travis-status]: https://secure.travis-ci.org/rowanmanning/pledge.png?branch=master
