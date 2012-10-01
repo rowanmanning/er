@@ -2,6 +2,7 @@
 # Dependencies
 colors = require 'colors'
 {exec} = require 'child_process'
+path = require 'path'
 
 # Paths
 paths =
@@ -26,10 +27,20 @@ task 'lint', ->
 
 # Run unit tests
 desc 'This runs all unit tests'
-task 'test', ->
-  console.log 'Running tests:'.cyan
-  exec getTestCommand(), (error, stdout, stderr) ->
-    console.log (if error is null then stdout else stderr)
+task 'test', (filePath) ->
+  if filePath?
+    filePath = path.join paths.unitTest, filePath
+    console.log "Running unit tests for #{filePath}:".cyan
+  else
+    console.log 'Running unit tests:'.cyan
+  exec getTestCommand(path: filePath), (error, stdout, stderr) ->
+    if error is null
+      console.log stdout
+    else
+      console.log stderr
+      fail()
+    complete()
+, async: true
 
 # CI
 desc 'This runs all tasks required for CI'
@@ -47,4 +58,5 @@ getLintCommand = (options = {}) ->
 getTestCommand = (options = {}) ->
   options.ui ?= 'tdd'
   options.reporter ?= 'spec'
-  "#{paths.nodebin}/mocha --compilers coffee:coffee-script --ui #{options.ui} --reporter #{options.reporter} --colors #{paths.unitTest}/**";
+  options.path ?= paths.unitTest
+  "#{paths.nodebin}/mocha --compilers coffee:coffee-script --ui #{options.ui} --reporter #{options.reporter} --colors --recursive #{options.path}"
